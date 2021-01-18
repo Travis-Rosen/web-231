@@ -1,0 +1,133 @@
+/**
+    Title: global.css
+    Author: Travis Rosen
+    Date: 1/17/2021
+    Description: Styling from WEB 200 CSS
+*/
+
+/*
+This defines the fonts to be used
+*/
+body {
+    font-family: 'Oswald', Verdana, Arial, sans-serif;
+}
+
+/*
+This styles the card class and changes the shadow and transition of the card
+*/
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+/*
+This is the styling of the card's title which includes font-size, color, and weight.
+*/
+.card-title {
+    text-align: center;
+    font-size: 2em;
+    color: #4F3674;
+    font-weight: 400;
+}
+
+/*
+This styles the card's content.
+*/
+.card-content {
+    padding: 2px 16px;
+}
+
+/*
+This styles what the card will do when hover event occurs.
+*/
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/*
+This section styles the btn including color, padding, alignment and more.
+*/
+.btn {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: 15px 32px;
+    color: #000;
+}
+
+/*
+This styles the input class.
+*/
+.input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/*
+This changes the background color and text color of the btn-primary
+*/
+.btn-primary {
+    background-color: #4F3674;
+    color: #fff;
+}
+
+/*
+This changes the effects when the hover event occurs for the btn-primary
+*/
+.btn-primary:hover {
+    background-color: #D6A800;
+    color: #4F3674;
+}
+
+/*
+This makes the full-width class 100% width
+*/
+.full-width {
+    width: 100%;
+}
+
+/*
+Displays the form class as a grid.
+*/
+.form {
+    display: inline-grid;
+    grid-template-columns: auto;
+}
+
+/*
+Styles the form field class with padding.
+*/
+.form-field {
+    padding: 20px;
+}
+
+/*
+Changes the color and removes the underline of the return home link. This link is used on all assignments.
+*/
+.return-home {
+    color: #4f3674;
+    text-decoration: none;
+}
+
+/*
+Changes the color and background color when hover event occurs for the return home link.
+*/
+.return-home:hover {
+    color: #4f3674;
+    background-color: #d6a800;
+}
+
+/*
+Changes the color of the return home link has already been clicked on. 
+*/
+.return-home:visited {
+    color: #3c275a;
+}

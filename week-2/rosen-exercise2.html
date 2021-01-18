@@ -1,0 +1,46 @@
+<!--
+    Title: rosen-exercise2.html
+    Author: Travis Rosen
+    Date: 1/17/2021
+    Description: Implementing JavaScript to an HTML page. 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Head that contains title, Google Fonts, meta tags, and css links.-->
+    <title>WEB-231 - Enterprise JavaScript I</title>
+    
+    <link href="rosen-payroll.css" type="text/css" rel="stylesheet" />
+    <link href="../global.css" type="text/css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+        
+    <meta charset="UTF-8">
+
+</head>
+<body>
+    <div id="container">
+        <!--Main heading for this assignment.-->
+        <h1>Exercise 2.2 - Hello JavaScript!</h1>
+        <!--Empty paragraph element where JavaScript will load into.-->
+        <p id="txtMyWorld"></p>
+        <!--Button element that will contain alert function from JavaScript-->
+        <button id="btnMyCourse" onclick="myCourse()">What course am I Taking?</button>
+
+        <br><br>
+        <!--Return link that brings user back to landing page.-->
+        <a class= "return-home" href="../index.html">Return</a>
+    </div>
+
+    <script>
+        //Declaring variable lastName and assigning it to 'Rosen'
+        let lastName = "Rosen";
+        //Binding txtMyWorld id to output: "You are now in Rosen's World!"
+        document.getElementById("txtMyWorld").innerHTML = "You are now in " + lastName + "'s world!";
+        //Function to give alert notification when button is pressed
+        function myCourse() {
+            alert("WEB 231 - Enterprise JavaScript I");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+/**
+    Title: rosen-payroll.css
+    Author: Travis Rosen
+    Date: 1/17/2021
+    Description: Styling for the rosen-payroll.html file
+*/
+
+/*
+Gives the lists on the html page a dotted 1 px red border
+*/
+ul {
+    border: dotted 1px red;
+}
+
+/*
+Changes the color and removes the underline of the return home link. This link is used on all assignments.
+*/
+.return-home {
+    color: #4f3674;
+    text-decoration: none;
+}
+
+/*
+Changes the color and background color when hover event occurs for the return home link.
+*/
+.return-home:hover {
+    color: #4f3674;
+    background-color: #d6a800;
+}
+
+/*
+Changes the color of the return home link has already been clicked on. 
+*/
+.return-home:visited {
+    color: #3c275a;
+}
