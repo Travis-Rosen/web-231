@@ -1,0 +1,79 @@
+<!--
+    Title: rosen-temp-conversion.html
+    Author: Travis Rosen
+    Date: 1/24/2021
+    Description: HTML page for creating a temperature conversion app
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Head includes Title, global.css style sheet, rosen-temp-conversion.css sheet, GoogleFonts and meta tags.-->
+    <title>WEB-231 - Enterprise JavaScript I</title>
+        
+    <link href="../global.css" type="text/css" rel="stylesheet" />
+    <link href="rosen-temp-conversion.css" type="text/css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+        
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <div id="container">
+        <!--The main heading for this assignment.-->
+        <h1 class="app-header">Welcome to the Temperature Conversion App!</h1>
+        <!--Div Container for card that will contain conversion input and button-->
+        <div id="card-container">
+            <!--Start of Fahrenheit conversion card-->
+            <div class="card">
+                <!--Title for the conversion card-->
+                <div class="card-title">Fahrenheit to Celsius Converter</div>
+                <!--Start of content within the card; this includes the form and input button-->
+                <div class="card-content">
+                    <div class="form">
+                        <div class="form-field">
+                            <!--This is the label next to the form for user to enter a number-->
+                            <label for="txtFahrenheit">Fahrenheit value:</label>
+                            <!--This is the form where the user will input a number-->
+                            <input type="text" id="txtFahrenheit" class="input" name="fahrenheit" />
+                        </div>
+                        <div class="form-field">
+                            <!--This is the button that users will click on to convert the temperature they entered.-->
+                            <button onclick="degreeConversion()" class="btn btn-primary full-width">Convert Temperature</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <!--This is the start of the card that will contain the results of the form-->
+        <div id="form-results">
+            <div class="card">
+                <!--This is the title for the results card-->
+                <div class="card-title">Conversion Results</div>
+                <!--This is where the actual conversion or results will appear-->
+                <div class="card-content" id="celsius-results">
+
+                </div>
+            </div>
+        </div>
+
+        <!--Link that takes user back to the Landing Page.-->
+        <a class= "return-home" href="../index.html">Return</a>
+        
+        <!--Start of the JavaScript that will convert the user's inputted temperature from Fahrenheit to Celsius using an on-click event -->
+        <script>
+            //On-click function that will convert the inputted temperature. 
+            function degreeConversion() {
+                //This assigns the variable fahrenheit to the value inputted.
+                let fahrenheit = document.getElementById("txtFahrenheit").value;
+                //This is the formula that will use the inputted value assigned to the 'fahrenheit' variable.
+                const celsius = ((parseFloat(fahrenheit) - 32) / 1.8).toFixed(2);
+                //This will bind the converted temperature (in celsius) to the Conversion Results card. 
+                document.getElementById('celsius-results').innerHTML = celsius;
+            }
+        </script>
+    </div>
+      
+</body>
+</html>

@@ -1,0 +1,56 @@
+/**
+    Title: site.css
+    Author: Travis Rosen
+    Date: 1/09/2021
+    Description: Styling for the index.html file; or the landing page
+*/
+
+/*
+Identifies the google fonts that will be used.
+*/
+body {
+    font-family: 'Oswald', Verdana, Arial, sans-serif;
+}
+
+/*
+Styles the container div including its margins. 
+*/
+#container {
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+/*
+Styles the colors and borders of the headings and subheadings
+*/
+h1, h2, h3, h4 {
+    background-color: #3C275A;
+    color: white;
+    border: solid 1px #D6A800;
+    padding: 10px;
+}
+
+/*
+Removes the underline and changes the color of the links on the landing page. 
+*/
+a {
+    color: #453674;
+    text-decoration: none;
+}
+
+/*
+Changes the color and background color when the links are hovered
+*/
+a :hover {
+    background-color: #D6A800;
+    color: #4f3674;
+
+}
+
+/*
+Changes the color when the links have already been clicked.
+*/
+a :visited {
+    color: #3c275a;
+}

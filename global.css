@@ -13,6 +13,22 @@ body {
 }
 
 /*
+This changes the h1 font-weight to 400.
+*/
+h1 {
+    font-weight: 400;
+    text-align: center;
+}
+
+/*
+This adds padding and margin styling to the container div.
+*/
+#container {
+    padding: 10px;
+    margin: 2% 5% 100px;
+}
+
+/*
 This styles the card class and changes the shadow and transition of the card
 */
 .card {
