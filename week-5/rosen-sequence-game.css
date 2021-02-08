@@ -1,0 +1,36 @@
+/**
+    Title: rosen-sequence-game.css
+    Author: Travis Rosen
+    Date: 2/7/2021
+    Description: Styling for rosen-number-game.html page.
+*/
+
+
+/**
+Adds width and margin styling to the card where user will select a sequence.  
+*/
+#card-container {
+    width: 600px;
+    margin: 3% auto 0;
+}
+/**
+Adds width and margin styling to the card displaying the results.
+*/
+#form-results {
+    width: 600px;
+    margin: 3% auto 0;
+}
+/**
+Adds a border to the button
+*/
+.btn {
+    border: solid black;
+    border-radius: 5px;
+}
+/**
+Changes font size and alignment for the details of the result. 
+*/
+#sequenceResults {
+    font-size: 28px;
+    text-align: center;
+}
