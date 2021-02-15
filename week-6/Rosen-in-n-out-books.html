@@ -1,0 +1,164 @@
+<!--
+    Title: rosen-in-n-out-books.html
+    Author: Travis Rosen
+    Date: 2/14/2021
+    Description: HTML page for viewing favorite books and favorite authors. 
+    Additional Notes: Converting JSON to HTML Table used for loop method from Dennis Ivy. (https://www.youtube.com/watch?v=XmdOZ5NSqb8)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Head includes Title, global.css style sheet, rosen-sequence-game.css sheet, GoogleFonts and meta tags.-->
+    <title>WEB-231 - Enterprise JavaScript I</title>
+        
+    <link href="../global.css" type="text/css" rel="stylesheet" />
+    <link href="Rosen-in-n-out-books.css" type="text/css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+        
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <div id="container">
+        <!--The main heading for this assignment.-->
+        <h1 class="app-header">Welcome to In-N-Out-Books!</h1>
+        <!--Div Container for card that will contain drop down selection for favorite books or authors, and a button to display those items.-->
+        <div id="card-container">
+            <!--Start of choose a listing card.-->
+            <div class="card">
+                <!--Title for the select listing card.-->
+                <div class="card-title">My Favorites</div>
+                <!--Start of content within the card; this includes the select dropdown and button to display results-->
+                <div class="card-content">
+                    <div class="form">
+                        <div class="form-field">
+                            <!--Label for the drop down select menu.-->
+                            <label for="">Choose a listing:</label>
+                            <!--Drop down menu will display these three options; (Books or Author, as well as a Select option)-->
+                            <select id="favoriteList" class="drop-down-menu">
+                                <option value="select">--Select--</option>
+                                <option value="books">Top 3 Favorite Books</option>
+                                <option value="authors">Top 3 Favorite Authors</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <!--This is the button that users will click on to display the listing that they chose to view.-->
+                            <button onclick="favoriteSelection()" id="btnDisplayListing" class="btn btn-primary full-width">Display Listing</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <br />
+            <!--Link that takes user back to the Landing Page.-->
+            <a class= "return-home" href="../index.html">Return</a>
+        </div>
+        <!--This is the start of the card that will display the Favorite Books.-->
+        <div id="form-results">
+            <div class="card" id="booksTable">
+                <!--This is the title for the favorite books listing, displayed in a table.-->
+                <div class="card-title" id="tableTitle">Top 3 Favorite Books</div>
+                <div class="card-content" id="tableContent">
+                    <!--Start of Table, includes table headers of ISBN, Title, and Pages.-->
+                    <table id="books">
+                        <tr>
+                            <th>ISBN</th>
+                            <th>Title</th>
+                            <th>Pages</th>
+                        </tr>
+                        <!--This is where the JavaScript loop will display the JSON data.-->
+                        <tbody id="booksBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="form-results">
+            <div class="card" id="authorsTable">
+                <!--This is the title for the favorite Author listing, displayed in a table.-->
+                <div class="card-title" id="tableTitle">Top 3 Favorite Authors</div>
+                <div class="card-content" id="tableContent">
+                    <!--Start of Table, includes table headers of Name and Genre-->
+                    <table id="books">
+                        <tr>
+                            <th>Name</th>
+                            <th>Genre</th>
+                        </tr>
+                        <!--This is where the JavaScript loop will display the JSON data.-->
+                        <tbody id="authorsBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        
+        <script>
+        //Start of the JavaScript.
+            //Object literal arrays that will be converted into the HTML tables.
+            let books = [
+                {"isbn": "9780575093331", "title": "Oathbringer", "pages": "1248"},
+                {"isbn": "9780575081406", "title": "The Name of the Wind", "pages": "722"},
+                {"isbn": "9780618002221", "title": "The Fellowship of the Ring", "pages": "479"},
+            ]
+            
+            let authors = [
+                {"name": "Brandon Sanderson", "genre": "Fantasy, Science Fiction"},
+                {"name": "Patrick Rothfuss", "genre": "Fantasy"},
+                {"name": "J.R.R. Tolkien", "genre": "High Fantasy"}
+            ]
+            //These are the two functions that will fill out the HTML tables.
+            createBooksTable(books)
+            createAuthorsTable(authors)
+            //Start of function for the books table.
+            function createBooksTable(data) {
+                let bTable = document.getElementById("booksBody")
+                //This is the loop that will convert the JSON data into their respective rows.
+                for (let i = 0; i < data.length; i++){
+                    let row =   `<tr>
+                                    <td>${data[i].isbn}</td>
+                                    <td>${data[i].title}</td>
+                                    <td>${data[i].pages}</td>
+                                </tr>`
+                    //This binds the function above to the rows.
+                    bTable.innerHTML += row
+                }
+            }
+            //Start of the function for the books table.
+            function createAuthorsTable(data){
+                let aTable = document.getElementById("authorsBody")
+                //This is the loop that will convert the JSON data into their respective rows.
+                for (let x = 0; x < data.length; x++){
+                    let row =  `<tr>
+                                    <td>${data[x].name}</td>
+                                    <td>${data[x].genre}</td>    
+                                </tr>`
+                    //Binds the function above to the rows.
+                    aTable.innerHTML += row
+                }
+            }
+            //This is the function that will display the selected listing chosen by the user, as well as make sure the other listings are not displayed.
+            function favoriteSelection() {
+                let choice = document.getElementById("favoriteList").value;
+                //If books is selected, the page will display the books table, and hide the authors table.
+                if (choice == "books") {
+                    document.getElementById("authorsTable").style.display = "none";
+                    document.getElementById("booksTable").style.display = "block";
+                //If authors is selected, the page will display the authors table, and hide the books table.
+                } else if (choice == "authors") {
+                    document.getElementById("authorsTable").style.display = "block";
+                    document.getElementById("booksTable").style.display = "none";
+                //If neither books or authors is selected, the page will display neither of the tables.
+                } else if (choice == "select") {
+                    document.getElementById("authorsTable").style.display = "none";
+                    document.getElementById("booksTable").style.display = "none";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
