@@ -1,0 +1,369 @@
+<!--
+    Title: Rosen-Javazon.html
+    Author: Travis Rosen
+    Date: 2/21/2021
+    Description: Page will let user choose tables to be displayed from JavaScript.
+    
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Head includes Title, global.css style sheet, rosen-sequence-game.css sheet, GoogleFonts and meta tags.-->
+    <title>WEB-231 - Enterprise JavaScript I</title>
+        
+    <link href="../global.css" type="text/css" rel="stylesheet" />
+    <link href="Rosen-Javazon.css" type="text/css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+        
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <div id="container">
+        <!--The main heading for this assignment.-->
+        <h1 class="app-header">Welcome to the Javazon App!</h1>
+        <!--Div Container for card that will contain drop down selection for favorite books or authors, and a button to display those items.-->
+        <div id="card-container">
+            <!--Start of choose a listing card.-->
+            <div class="card">
+                <!--Title for the select listing card.-->
+                <div class="card-title">Javazon Selection Form</div>
+                <!--Start of content within the card; this includes the select dropdown and button to display results-->
+                <div class="card-content">
+                    <div class="form">
+                        <div class="form-field">
+                            <!--Label for the drop down select menu.-->
+                            <label for="">Choose a listing:</label>
+                            <!--Drop down menu will display these four options; (Products, Services, Employees, and Select)-->
+                            <select id="listing" name="listing" class="drop-down-menu">
+                                <option value="select">--Select--</option>
+                                <option value="products">Products</option>
+                                <option value="services">Services</option>
+                                <option value="employees">Employees</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <!--This is the button that users will click on to display the listing that they chose to view.-->
+                            <button onclick="javazonSelection()" id="btnDisplayListing" class="btn btn-primary full-width">Display Listing</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <br />
+            <!--Link that takes user back to the Landing Page.-->
+            <a class= "return-home" href="../index.html">Return</a>
+        </div>
+
+        <div id="form-results">
+            <div class="card" id="productsTable">
+                <!--This is the title for the products listing, displayed in a table.-->
+                <div class="card-title" id="tableTitle">Javazon Products</div>
+                <div class="card-content" id="tableContent">
+                    <!--Start of table headers, including Product ID, Description, Price, Quantity, and Total Value.-->
+                    <table>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total Value</th>
+                        </tr>
+                        <!--Each cell of table data is bound to the Javascript.-->
+                        <tbody>
+                            <!--HTML and CSS section with data for each header.-->
+                            <tr>
+                                <td id="htmlId"></td>
+                                <td id="htmlDescription"></td>
+                                <td id="htmlPrice"></td>
+                                <td id="htmlQuantity"></td>
+                                <td id="htmlTotalValue"></td>
+                            </tr>
+                            <!--JavaScript Definitive Guide section with data for each header.-->
+                            <tr>
+                                <td id="jsDefId"></td>
+                                <td id="jsDefDescription"></td>
+                                <td id="jsDefPrice"></td>
+                                <td id="jsDefQuantity"></td>
+                                <td id="jsDefTotalValue"></td>
+                            </tr>
+                            <!--Javascript Design section with data for each header.-->
+                            <tr>
+                                <td id="jsDesId"></td>
+                                <td id="jsDesDescription"></td>
+                                <td id="jsDesPrice"></td>
+                                <td id="jsDesQuantity"></td>
+                                <td id="jsDesTotalValue"></td>
+                            </tr>
+                            <!--Express in Action section with data for each header.-->
+                            <tr>
+                                <td id="expressId"></td>
+                                <td id="expressDescription"></td>
+                                <td id="expressPrice"></td>
+                                <td id="expressQuantity"></td>
+                                <td id="expressTotalValue"></td>
+                            </tr>
+                            <!--MongoDB section with data for each header.-->
+                            <tr>
+                                <td id="mongoId"></td>
+                                <td id="mongoDescription"></td>
+                                <td id="mongoPrice"></td>
+                                <td id="mongoQuantity"></td>
+                                <td id="mongoTotalValue"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card" id="servicesTable">
+                <!--This is the title for the services listing, displayed in a table.-->
+                <div class="card-title" id="tableTitle">Javazon Services</div>
+                <div class="card-content" id="tableContent">
+                    <!--Start of table headers, including Service ID, Description, Hourly Rate, and Minimum Billable Hours.-->
+                    <table>
+                        <tr>
+                            <th>Service ID</th>
+                            <th>Description</th>
+                            <th>Hourly Rate</th>
+                            <th>Minimum Billable Hours</th>
+                        </tr>
+                        <!--Each cell of table data is bound to the Javascript.-->
+                        <tbody>
+                            <!--Website Design section with data for each header.-->
+                            <tr>
+                                <td id="webDesId"></td>
+                                <td id="webDesDescription"></td>
+                                <td id="webDesHourly"></td>
+                                <td id="webDesBilling"></td>
+                            </tr>
+                            <!--DevOps Consulting section with data for each header.-->
+                            <tr>
+                                <td id="devOpsId"></td>
+                                <td id="devOpsDescription"></td>
+                                <td id="devOpsHourly"></td>
+                                <td id="devOpsBilling"></td>
+                            </tr>
+                            <!--DataBase Design section with data for each header.-->
+                            <tr>
+                                <td id="dataBaseId"></td>
+                                <td id="dataBaseDescription"></td>
+                                <td id="dataBaseHourly"></td>
+                                <td id="dataBaseBilling"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card" id="employeesTable">
+                <!--This is the title for the employees listing, displayed in a table.-->
+                <div class="card-title" id="tableTitle">Javazon Products</div>
+                <div class="card-content" id="tableContent">
+                    <!--Start of table headers, including Employee ID, Last Name, First Name, and Salary.-->
+                    <table>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Salary</th>
+                            </tr>
+                            <!--Each cell of table data is bound to the Javascript.-->
+                            <tbody>
+                            <!--Beethoven section with data for each header.-->
+                            <tr>
+                                <td id="beethovenId"></td>
+                                <td id="beethovenLname"></td>
+                                <td id="beethovenFname"></td>
+                                <td id="beethovenSalary"></td>
+                            </tr>
+                            <!--Bach section with data for each header.-->
+                            <tr>
+                                <td id="bachId"></td>
+                                <td id="bachLname"></td>
+                                <td id="bachFname"></td>
+                                <td id="bachSalary"></td>
+                            </tr>
+                            <!--Mozart section with data for each header.-->
+                            <tr>
+                                <td id="mozartId"></td>
+                                <td id="mozartLname"></td>
+                                <td id="mozartFname"></td>
+                                <td id="mozartSalary"></td>
+                            </tr>
+                            <!--Brahms section with data for each header.-->
+                            <tr>
+                                <td id="brahmsId"></td>
+                                <td id="brahmsLname"></td>
+                                <td id="brahmsFname"></td>
+                                <td id="brahmsSalary"></td>
+                            </tr>
+                            <!--Haydn section with data for each header.-->
+                            <tr>
+                                <td id="haydnId"></td>
+                                <td id="haydnLname"></td>
+                                <td id="haydnFname"></td>
+                                <td id="haydnSalary"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            //Defining products, services, and employees variables and binding them to table locations. This also displays them as none on load of page.
+            let products = document.getElementById("productsTable");
+            document.getElementById("productsTable").style.display = "none";
+
+            let services = document.getElementById("servicesTable");
+            document.getElementById("servicesTable").style.display = "none";
+
+            let employees = document.getElementById("employeesTable");
+            document.getElementById("employeesTable").style.display = "none";
+
+            //This is the function that will display the listing chosen by the user. 
+            function javazonSelection () {
+                let choice = document.getElementById("listing").value;
+                //Through the switch statement, the site will load the selected listing and display the others as none.
+                switch (choice) {
+                    case "products":
+                        products.style.display = "block";
+                        services.style.display = "none";
+                        employees.style.display = "none";
+                        break;
+                    case "services":
+                        products.style.display = "none";
+                        services.style.display = "block";
+                        employees.style.display = "none";
+                        break;
+                    case "employees":
+                        products.style.display = "none";
+                        services.style.display = "none";
+                        employees.style.display = "block";
+                        break;
+                    default:
+                        products.style.display = "none";
+                        services.style.display = "none";
+                        employees.style.display = "none";
+                }
+             
+                //Defining the class data for Products.
+                class Products {
+                    constructor(id, description, price, quantity) {
+                        this.id = id;
+                        this.description = description;
+                        this.price = price.toFixed(2);
+                        this.quantity = quantity;
+                    }
+                    get totalValue() {
+                        return (this.quantity * this.price).toFixed(2)
+                    }
+                }
+                //Defining the class data for Services
+                class Services {
+                    constructor(id, description, hourlyRate, min) {
+                        this.id = id;
+                        this.description = description;
+                        this.hourlyRate = hourlyRate.toFixed(2);
+                        this.min = min;
+                    }
+                }
+                //Defining the class data for Employees.
+                class Employees {
+                    constructor (id, firstName, lastName, salary) {
+                        this.id = id;
+                        this.firstName = firstName;
+                        this.lastName = lastName;
+                        this.salary = salary.toFixed(2)
+                    }
+                }
+                //Defining the variable htmlProduct and binding the objects to the products table.
+                const htmlProduct = new Products('9781118008188', 'HTML & CSS: Design and Build Websites', 22.26, 10);
+                document.getElementById("htmlId").innerHTML = htmlProduct.id;
+                document.getElementById("htmlDescription").innerHTML = htmlProduct.description;
+                document.getElementById("htmlPrice").innerHTML = htmlProduct.price;
+                document.getElementById("htmlQuantity").innerHTML = htmlProduct.quantity;
+                document.getElementById("htmlTotalValue").innerHTML = htmlProduct.totalValue;
+                //Defining the variable javaScriptDefinitiveProduct and binding the objects to the product table. 
+                const javaScriptDefinitiveProduct = new Products('9781491952023', 'JavaScript: The Definitive Guide 7/E', 41.33, 7);
+                document.getElementById("jsDefId").innerHTML = javaScriptDefinitiveProduct.id;
+                document.getElementById("jsDefDescription").innerHTML = javaScriptDefinitiveProduct.description;
+                document.getElementById("jsDefPrice").innerHTML = javaScriptDefinitiveProduct.price;
+                document.getElementById("jsDefQuantity").innerHTML = javaScriptDefinitiveProduct.quantity;
+                document.getElementById("jsDefTotalValue").innerHTML = javaScriptDefinitiveProduct.totalValue;
+                //Defining the variable javaScriptDesignProduct and binding the objects to the product table.
+                const javaScriptDesignProduct = new Products('9781449331818', 'Learning JavaScript Design Patterns 1/E', 25.99, 3);
+                document.getElementById("jsDesId").innerHTML = javaScriptDesignProduct.id;
+                document.getElementById("jsDesDescription").innerHTML = javaScriptDesignProduct.description;
+                document.getElementById("jsDesPrice").innerHTML = javaScriptDesignProduct.price;
+                document.getElementById("jsDesQuantity").innerHTML = javaScriptDesignProduct.quantity;
+                document.getElementById("jsDesTotalValue").innerHTML = javaScriptDesignProduct.totalValue;
+                //Defining the variable expressProduct and binding the objects to the product table.
+                const expressProduct = new Products('9781617292422', 'Express in Action: Writing, building, and testing Node.js applications 1/E', 34.91, 3);
+                document.getElementById("expressId").innerHTML = expressProduct.id;
+                document.getElementById("expressDescription").innerHTML = expressProduct.description;
+                document.getElementById("expressPrice").innerHTML = expressProduct.price;
+                document.getElementById("expressQuantity").innerHTML = expressProduct.quantity;
+                document.getElementById("expressTotalValue").innerHTML = expressProduct.totalValue;
+                //Defining the variable mongoProduct and binding the objects to the product table.
+                const mongoProduct = new Products('9781491954461', 'MongoDB The Definitive Guide', 33.70, 8);
+                document.getElementById("mongoId").innerHTML = mongoProduct.id;
+                document.getElementById("mongoDescription").innerHTML = mongoProduct.description;
+                document.getElementById("mongoPrice").innerHTML = mongoProduct.price;
+                document.getElementById("mongoQuantity").innerHTML = mongoProduct.quantity;
+                document.getElementById("mongoTotalValue").innerHTML = mongoProduct.totalValue;
+                //Defining the variable webDesignService and binding the objects to the services table.
+                const webDesignService = new Services(100, 'Website Design', 150, 25);
+                document.getElementById("webDesId").innerHTML = webDesignService.id;
+                document.getElementById("webDesDescription").innerHTML = webDesignService.description;
+                document.getElementById("webDesHourly").innerHTML = webDesignService.hourlyRate;
+                document.getElementById("webDesBilling").innerHTML = webDesignService.min;
+                //Defining the variable devOpsService and binding the objects to the services table.
+                const devOpsService = new Services(101, 'DevOps Consulting', 125, 50);
+                document.getElementById("devOpsId").innerHTML = devOpsService.id;
+                document.getElementById("devOpsDescription").innerHTML = devOpsService.description;
+                document.getElementById("devOpsHourly").innerHTML = devOpsService.hourlyRate;
+                document.getElementById("devOpsBilling").innerHTML = devOpsService.min;
+                //Defining the variable dataBaseService and binding the objects to the services table.
+                const dataBaseService = new Services(102, 'DataBase Design', 125, 15);
+                document.getElementById("dataBaseId").innerHTML = dataBaseService.id;
+                document.getElementById("dataBaseDescription").innerHTML = dataBaseService.description;
+                document.getElementById("dataBaseHourly").innerHTML = dataBaseService.hourlyRate;
+                document.getElementById("dataBaseBilling").innerHTML = dataBaseService.min;
+                //Defining the variable beethovenEmployee and binding the objects to the Employees table.
+                const beethovenEmployee = new Employees(1007, 'Beethoven', 'Ludwig', 13.99);
+                document.getElementById("beethovenId").innerHTML = beethovenEmployee.id;
+                document.getElementById("beethovenLname").innerHTML = beethovenEmployee.lastName;
+                document.getElementById("beethovenFname").innerHTML = beethovenEmployee.firstName;
+                document.getElementById("beethovenSalary").innerHTML = beethovenEmployee.salary;
+                //Defining the variable bachEmployee and binding the objects to the Employees table.
+                const bachEmployee = new Employees(1008, 'Bach', 'Johann', 22.30);
+                document.getElementById("bachId").innerHTML = bachEmployee.id;
+                document.getElementById("bachLname").innerHTML = bachEmployee.lastName;
+                document.getElementById("bachFname").innerHTML = bachEmployee.firstName;
+                document.getElementById("bachSalary").innerHTML = bachEmployee.salary;
+                //Defining the variable mozartEmployee and binding the objects to the Employees table.
+                const mozartEmployee = new Employees(1009, 'Mozart', 'Wolfgang', 19.50);
+                document.getElementById("mozartId").innerHTML = mozartEmployee.id;
+                document.getElementById("mozartLname").innerHTML = mozartEmployee.lastName;
+                document.getElementById("mozartFname").innerHTML = mozartEmployee.firstName;
+                document.getElementById("mozartSalary").innerHTML = mozartEmployee.salary;
+                //Defining the variable brahmsEmployee and binding the objects to the Employees table.
+                const brahmsEmployee = new Employees(1010, 'Brahms', 'Johannes', 12.00);
+                document.getElementById("brahmsId").innerHTML = brahmsEmployee.id;
+                document.getElementById("brahmsLname").innerHTML = brahmsEmployee.lastName;
+                document.getElementById("brahmsFname").innerHTML = brahmsEmployee.firstName;
+                document.getElementById("brahmsSalary").innerHTML = brahmsEmployee.salary;
+                //Defining the variable haydnEmployee and binding the objects to the Employees table.
+                const haydnEmployee = new Employees(1011, 'Haydn', 'Joseph', 32.50);
+                document.getElementById("haydnId").innerHTML = brahmsEmployee.id;
+                document.getElementById("haydnLname").innerHTML = brahmsEmployee.lastName;
+                document.getElementById("haydnFname").innerHTML = brahmsEmployee.firstName;
+                document.getElementById("haydnSalary").innerHTML = brahmsEmployee.salary;
+            };
+        </script>
+    </div>
+</body>
+</html>
