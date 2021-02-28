@@ -1,0 +1,95 @@
+<!--
+    Title: Rosen-Alphabet-Game.html
+    Author: Travis Rosen
+    Date: 2/27/2021
+    Description: HTML page that will display the letter connected to its numerical position in the alphabet. 
+    
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Head includes Title, global.css style sheet, rosen-sequence-game.css sheet, GoogleFonts and meta tags.-->
+    <title>WEB-231 - Enterprise JavaScript I</title>
+        
+    <link href="../global.css" type="text/css" rel="stylesheet" />
+    <link href="Rosen-Alphabet-Game.css" type="text/css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+        
+    <meta charset="UTF-8">
+
+</head>
+<body>
+    <div id="container">
+        <!--The main heading for this assignment.-->
+        <h1 class="app-header">Welcome to the Alphabet Game!</h1>
+        <!--Div Container for card that will contain input and "find letter" button-->
+        <div id="card-container">
+            <!--Start of "alphabet position" card.-->
+            <div class="card">
+                <!--Title for alphabet number card.-->
+                <div class="card-title">Alphabet Number Form</div>
+                <!--Start of content within the card; this includes the form and find letter button-->
+                <div class="card-content">
+                    <div class="form">
+                        <div class="form-field">
+                            <!--This is the label next to the form for user to enter a position number-->
+                            <label for="txtPosition">Alphabet Letter Position:</label>
+                            <!--This is the form where the user will input a number-->
+                            <input type="text" id="txtPosition" class="input" name="letter"  />
+                        </div>
+                        <div class="form-field">
+                            <!--This is the button that users will click on to reveal their results-->
+                            <button id="btnFindLetter" class="btn btn-primary full-width" onclick="letterPosition()">Find Letter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Link that takes user back to the Landing Page.-->
+            <a class= "return-home" href="../index.html">Return</a>
+        </div>
+        <!--This section includes the card that will show the alphabet, as well as the results of the users number input.-->
+        <div id="form-results">
+            <div class="card">
+                <!--This is the title for the results card-->
+                <div class="card-title">Letters in Alphabet</div>
+                <div class="card-content" id="letters">
+
+                </div>
+            </div>
+            <!--Card that will display the results of the chosen number position.-->
+            <div class="card">
+                <div class="card-title">Results</div>
+                <div class="card-content" id="letterResult">
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+            //This is the array that defines each letter of the alphabet. 
+            const alphabet = ["", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+            //Variable aplphabetOutput will be used in the loop below. 
+            let alphabetOutput = '';
+            let fullAlphabet;
+            //For..in loop that will cycle through the 'alphabet' array above.
+            for (fullAlphabet in alphabet) {
+                alphabetOutput += alphabet[fullAlphabet] + ', ';
+            }
+            //Binds the results to the Letters in Alphabet card. 
+            document.getElementById("letters").innerHTML = alphabetOutput.slice(1, 76);
+            //This is the function that onClick will display the result.
+            function letterPosition() {
+                //Defines that 'pos' as the number inputted by the user. 
+                let pos = document.getElementById("txtPosition").value;
+                //Defines 'letter' as the number inputted in the position of the array.  
+                let letter = alphabet[pos];
+                //if/else statement that will show the results depending on the input by the user. 
+                if (letter == undefined) {
+                    document.getElementById("letterResult").innerHTML = "There are not " + pos + " letters in the alphabet."
+                } else (document.getElementById ("letterResult").innerHTML = letter + " is at position " + pos + " in the alphabet.")
+            }
+        </script>
+    </div>
+</body>
+</html>
