@@ -1,0 +1,30 @@
+/**
+    Title: Rosen-Alphabet-Game.css
+    Author: Travis Rosen
+    Date: 3/7/2021
+    Description: Styling for Rosen-Card-Game.html
+*/
+
+
+/**
+Alignment to center for cards.
+*/
+.player-cards {
+    text-align: center;
+}
+/**
+Displaying cards in a grid
+*/
+#player-cards {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    grid-gap: 10px 10px;
+}
+/**
+Margin styling for cards. 
+*/
+.card {
+    margin-right: auto;
+    margin-left: auto;
+}

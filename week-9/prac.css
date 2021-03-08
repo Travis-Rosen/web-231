@@ -1,0 +1,15 @@
+.player-card {
+    text-align: center;
+}
+
+#player-cards {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    grid-gap: 10px 10px;
+}
+
+.card {
+    margin-right: auto;
+    margin-left: auto;
+}
